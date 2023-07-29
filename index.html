@@ -10,7 +10,8 @@
   <style>
     /* Add any custom styles here */
     body {
-      background-color: #f0f0f0;
+      background-color: #121212; /* Dark background */
+      color: #fff; /* White text */
       padding: 20px;
     }
     .song-container {
@@ -38,14 +39,14 @@
     }
     .song-artist {
       font-size: 18px;
-      color: #888;
+      color: #bbb;
       transform: translateY(-20px); /* Move the artist name upwards initially */
       opacity: 0; /* Hide the artist name initially */
       animation: slideIn 1s ease-in-out 0.5s forwards, fadeIn 1s ease-in-out 0.5s forwards; /* Apply slide-in and fade-in animations */
     }
     .song-album {
       font-size: 18px;
-      color: #888;
+      color: #bbb;
       transform: translateY(-20px); /* Move the album name upwards initially */
       opacity: 0; /* Hide the album name initially */
       animation: slideIn 1s ease-in-out 1s forwards, fadeIn 1s ease-in-out 1s forwards; /* Apply slide-in and fade-in animations */
@@ -58,6 +59,45 @@
     audio {
       opacity: 0; /* Hide the audio player initially */
       animation: fadeIn 1s ease-in-out 2s forwards; /* Apply fade-in animation */
+    }
+    /* Add animation for the song container visualizer */
+    .visualizer-container {
+      height: 100px;
+      width: 100%;
+      background-color: #444;
+      position: relative;
+      margin-top: 30px;
+      animation: pulse 1.5s linear infinite;
+    }
+    .visualizer-bar {
+      width: 4px;
+      height: 10px;
+      background-color: #ff9900; /* Orange color for the visualizer bar */
+      position: absolute;
+      bottom: 0;
+      opacity: 0.8;
+      animation: beat 1s alternate infinite;
+    }
+    /* Animate the visualizer bars */
+    @keyframes beat {
+      0% {
+        height: 10px;
+      }
+      100% {
+        height: 100px;
+      }
+    }
+    /* Create a pulsing effect for the visualizer container */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
     }
   </style>
 </head>
@@ -83,6 +123,16 @@
         </audio>
       </div>
     </div>
+  </div>
+
+  <!-- Add the visualizer container -->
+  <div class="visualizer-container">
+    <!-- Add multiple visualizer bars to create a waveform-like effect -->
+    <div class="visualizer-bar"></div>
+    <div class="visualizer-bar" style="left: 10px;"></div>
+    <div class="visualizer-bar" style="left: 20px;"></div>
+    <div class="visualizer-bar" style="left: 30px;"></div>
+    <!-- Add more visualizer bars as needed -->
   </div>
 
   <!-- Bootstrap JS -->
